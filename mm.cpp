@@ -113,8 +113,9 @@ public:
 			case 2: {
 				std::string name;
 
+				std::cin.ignore();
 				std::cout << "Enter model name to remove: " << std::endl;
-				std::cin >> name;
+				std::getline(std::cin >> std::ws, name);
 
 				if (removeModel(name)) {
 					std::cout << "Model removed successfully!\n";
@@ -154,8 +155,9 @@ public:
 			}
 			case 4: {
 				std::string name;
+				std::cin.ignore();
 				std::cout << "Enter name to find: " << std::endl;
-				std::cin >> name;
+				std::getline(std::cin >> std::ws, name);
 
 				Model* m = findModel(name);
 				if (m) {
