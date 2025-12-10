@@ -4,24 +4,23 @@
 
 class Model {
 private:
-	std::string name;
-	double version;
+	std::string name,version;
 	double accuracy;
 	std::string created_at;
 	std::string description;
 public:
 	Model() = default;
 
-	Model(const std::string& n, int v, double a,const std::string& c,const std::string& d)
+	Model(const std::string& n,const std::string& v, double a,const std::string& c,const std::string& d)
 		:name(n), version(v), accuracy(a), created_at(c), description(d) {}
 
 	std::string getName() const { return name; }
-	int getVersion() const { return version; }
+	std::string getVersion() const { return version; }
 	double getAccuracy() const { return accuracy; }
 	std::string getCreated_at() const { return created_at; }
 	std::string getDescription()const { return description; }
 
-	void setVersion(int v) { version = v; }
+	void setVersion(const std::string& v) { version = v; }
 	void setAccuracy(double a) { accuracy = a; }
 	void setDescription(const std::string& d) { description = d; }
 
@@ -92,14 +91,13 @@ public:
 
 			switch (choice) {
 			case 1: {
-				std::string name, created_at, description;
-				double version;
+				std::string name, created_at, description,version;
 				double accuracy;
 
 				std::cout << "Enter name: " << std::endl;
 				std::getline(std::cin >> std::ws, name);
 				std::cout << "Enter version: " << std::endl;
-				std::cin >> version;
+				std::getline(std::cin>>std::ws, version);
 				std::cout << "Enter accuracy: " << std::endl;
 				std::cin >> accuracy;
 				std::cin.ignore();
@@ -125,14 +123,14 @@ public:
 				break;
 			}
 			case 3: {
-				std::string name, description;
-				double version;
+				std::string name, description,version;
 				double accuracy;
 
 				std::cout << "Enter name to update: " << std::endl;
 				std::cin >> name;
+				std::cin.ignore();
 				std::cout << "Enter new version: " << std::endl;
-				std::cin >> version;
+				std::getline(std::cin>>std::ws, version);
 				std::cout << "Enter new accuracy: " << std::endl;
 				std::cin >> accuracy;
 				std::cin.ignore();
